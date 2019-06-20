@@ -1,9 +1,8 @@
 const path = require('path');
-const WebpackShellPlugin = require('webpack-shell-plugin');
 
 module.exports = {
   entry: ['./src/server/index.coffee'],
-  mode: 'development',
+  mode: 'production',
   target: 'node',
   output: {
     path: path.resolve(__dirname, '../build/server'),
@@ -33,9 +32,5 @@ module.exports = {
       }
     ]
   },
-  plugins: [
-    new WebpackShellPlugin({
-        onBuildEnd: ['npm run run-server:dev']
-    }),
-  ]
+  plugins: []
 }

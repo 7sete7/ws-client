@@ -1,7 +1,8 @@
 const path = require("path");
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  mode: "development",
+  mode: "production",
   entry: path.join(__dirname, "../src/client/index.coffee"),
   module: {
     rules: [
@@ -27,14 +28,18 @@ module.exports = {
     ]
   },
   output: {
-    path: __dirname + "../build/client",
+    path: __dirname + "/../build/client",
     filename: "bundle.js"
   },
-
   devServer: {
     inline: true,
     contentBase: "./public",
     port: 3000
   },
-  plugins: []
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: __dirname + '/../public/index.html',
+      favicon: __dirname + '/../public/favicon.ico'
+    })
+  ]
 };

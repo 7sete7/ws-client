@@ -9,7 +9,7 @@ onSend = (text) -> (event) ->
     msg = 
         payload: text
         type: 'message'
-        date: new Date()
+        date: new Date().toISOString()
 
     webSocket.send JSON.stringify msg
 
@@ -23,7 +23,3 @@ export default () -> (
             </section>
         </div>
     )
-
-# export default () -> 
-#     [a, b] = useState([])
-#     return <button onClick={() -> b((h) -> [].concat(h,Math.random()))}>{a.join()}</button>
