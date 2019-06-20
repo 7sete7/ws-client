@@ -9,7 +9,9 @@ app.get '/', (req, res) ->
     res.send '<b>OOIIE</b>'
 
 app.ws '/echo', (ws, req) ->
-    ws.on 'message', msg ->
-        res.send msg
+    console.log 'Connected :D'
+    ws.on 'message', (msg) ->
+        console.log 'Mensagem'
+        ws.send msg
 
 app.listen 8080, () -> console.log 'Server listening on port 8080!'

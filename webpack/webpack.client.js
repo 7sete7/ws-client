@@ -1,18 +1,10 @@
 const path = require("path");
-const HtmlWebpackPlugin = require("webpack-html-plugin");
-const WebpackShellPlugin = require("webpack-shell-plugin");
 
 module.exports = {
   mode: "development",
   entry: path.join(__dirname, "../src/client/index.coffee"),
   module: {
     rules: [
-      // {
-      //   test: /\.(js|jsx)$/,
-      //   exclude: /node_modules/,
-      //   loader: 'babel-loader',
-      //   query: { presets: ['@babel/preset-env', '@babel/preset-react'] }
-      // },
       {
         test: /\.coffee$/,
         exclude: /node_modules/,
@@ -27,11 +19,11 @@ module.exports = {
             }
           }
         ]
+      },
+      {
+          test:/\.(css)/,
+          use: ['style-loader', 'css-loader']
       }
-      // {
-      //     test:/\.(css)/,
-      //     use: ['style-loader', 'css-loader'] TEM QUE INSTRALAR SAMERDA
-      // }]
     ]
   },
   output: {
@@ -47,9 +39,5 @@ module.exports = {
       "/api": "http://localhost:8080"
     }
   },
-  plugins: [
-    // new WebpackShellPlugin({
-    //     onBuildEnd: ['npm run run-client:dev']
-    // }),
-  ]
+  plugins: []
 };

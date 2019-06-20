@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "run-server:dev": "nodemon build/server/index.js",
+    "run-server:dev": "nodemon build/server/index.js --watch src/server/",
     "client": "webpack-dev-server --config webpack/webpack.client.js",
     "server": "webpack --config webpack/webpack.server.js",
     "dev": "concurrently \"npm run server\" \"npm run client\""
@@ -12,10 +12,13 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "css-loader": "^3.0.0",
     "express": "^4.17.1",
     "express-ws": "^4.0.0",
+    "mongodb": "^3.2.7",
     "react": "^16.8.6",
-    "react-dom": "^16.8.6"
+    "react-dom": "^16.8.6",
+    "style-loader": "^0.23.1"
   },
   "devDependencies": {
     "@babel/core": "^7.4.5",
@@ -30,8 +33,6 @@
     "nodemon": "^1.19.1",
     "webpack": "^4.34.0",
     "webpack-cli": "^3.3.4",
-    "webpack-dev-server": "^3.7.1",
-    "webpack-html-plugin": "^0.1.1",
-    "webpack-shell-plugin": "^0.5.0"
+    "webpack-dev-server": "^3.7.1"
   }
 }
