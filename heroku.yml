@@ -1,0 +1,5 @@
+release:
+  command:
+    - npm run build-server
+run:
+  web: node build/server/index.js
