@@ -29,4 +29,4 @@ app.ws '/echo', (ws, req) ->
         console.log 'Mensagem'
         ws.send msg
 
-app.listen 8080, () -> console.log 'Server listening on port 8080!'
+app.listen process.env.PORT || 8080, () -> console.log "Server listening on port #{process.env.PORT || 8080}!"
