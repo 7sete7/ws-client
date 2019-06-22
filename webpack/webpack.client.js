@@ -1,4 +1,5 @@
 const path = require("path");
+const Webpack = require("webpack");
 
 module.exports = {
   mode: "development",
@@ -36,5 +37,9 @@ module.exports = {
     contentBase: "./public",
     port: 3000
   },
-  plugins: []
+  plugins: [
+    new Webpack.DefinePlugin({
+      "process.env": process.env
+    })
+  ]
 };

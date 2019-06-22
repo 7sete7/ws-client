@@ -3,7 +3,7 @@ import Input from './components/input.coffee'
 import Canvas from './components/canvas.coffee'
 import './styles/chat.css'
 
-webSocket = new WebSocket("ws://#{process.env.SERVER_URL}/echo");
+webSocket = new WebSocket("wss://#{process.env.SERVER_URL}/echo");
 
 onSend = (text) -> (event) ->
     msg = 
