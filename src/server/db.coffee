@@ -14,7 +14,6 @@ connect = () ->
 getConnection = () ->
     return new Promise((resolve, reject) -> 
         if instance?
-            console.log instance
             return resolve(instance)
         else
             connect().then(resolve).catch(reject)

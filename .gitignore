@@ -1,4 +1,4 @@
-build/server/
+build/
 node_modules/
 *.log
 .env

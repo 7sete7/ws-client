@@ -27,6 +27,6 @@ app.ws '/echo', (ws, req) ->
         .catch console.error
  
         console.log 'Mensagem'
-        ws.send msg
+        xws.getWss().clients.forEach (c) -> c.send msg
 
 app.listen process.env.PORT || 8080, () -> console.log "Server listening on port #{process.env.PORT || 8080}!"
