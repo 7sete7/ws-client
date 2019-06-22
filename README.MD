@@ -10,6 +10,7 @@
 
 ### Publish server
 
+This step is only required when there is a server change.
 Must have **docker** and **Heroku CLI** instaled
   
 - Setup (only on the first time)
@@ -24,4 +25,6 @@ Must have **docker** and **Heroku CLI** instaled
 > to the [docker hub](https://cloud.docker.com/u/7sete7/repository/docker/7sete7/ws).
 
 ### Publish client
-  - Work in progress...
+
+The client will be automatically published (with some delay) trhough a [BuddyWorks](https://app.buddy.works/leonardogviva/ws/pipelines) pipeline.
+It willbuild the client and push to the repository [ws-client](https://github.com/7sete7/ws-client) and be accesible at [github pages](https://7sete7.github.io/ws-client/).
