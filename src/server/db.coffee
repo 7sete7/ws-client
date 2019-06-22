@@ -1,11 +1,10 @@
 import MongoClient from 'mongodb'
 
-mongoURI = 'mongodb+srv://leo:%40hotmail.com@cluster-3dw4o.gcp.mongodb.net/test?retryWrites=true&w=majority'
 instance = null
 
 connect = () ->
     return new Promise (resolve, reject) ->
-        MongoClient.connect(mongoURI, { useNewUrlParser: true })
+        MongoClient.connect(process.env.MONGO_URL, { useNewUrlParser: true })
         .then (connection) ->
             instance = connection.db 'ws'
             resolve instance

@@ -2,7 +2,10 @@
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/2f0c7ef4efac4deeb064084bae3f5c97)](https://app.codacy.com/app/7sete7/Ws?utm_source=github.com&utm_medium=referral&utm_content=7sete7/Ws&utm_campaign=Badge_Grade_Dashboard)
 
 ### Development
-- Create a .env file with the PORT
+- Create a .env file with the following:
+  - PORT - The port in wich the server will run
+  - MONGO_URL - The The mongo url to connect to the mongo database
+  - SERVER_URL - The urk in wich the server is running
 - `npm run dev`
 
 ### Publish server

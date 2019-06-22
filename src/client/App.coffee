@@ -3,7 +3,7 @@ import Input from './components/input.coffee'
 import Canvas from './components/canvas.coffee'
 import './styles/chat.css'
 
-webSocket = new WebSocket('ws://chatzinho-da-bolagem.herokuapp.com/echo');
+webSocket = new WebSocket("ws://#{process.env.SERVER_URL}/echo");
 
 onSend = (text) -> (event) ->
     msg = 
