@@ -16,6 +16,12 @@ module.exports = {
     port: 8080,
     open: true
   },
+  resolve: {
+    alias: {
+      Utils: path.resolve(__dirname, '../src/utils/')
+    },
+    extensions: ['.coffee', '.js']
+  },
   module: {
     rules: [
       {
@@ -25,7 +31,9 @@ module.exports = {
             loader: 'coffee-loader',
             options: { 
               transpile: {
-                presets: ['@babel/preset-env']
+                presets: [
+                  ["@babel/preset-env", { targets: { node: "10" } }]
+                ]
               }
             }
           }

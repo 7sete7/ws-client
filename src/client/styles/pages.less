@@ -1,0 +1,52 @@
+.container-flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+
+  &.container--center {
+    height: -webkit-fill-available;
+    height: fill-available;
+    height: -moz-fill-available;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+  }
+}
+
+.panel {
+  display: flex;
+  padding: 25px;
+
+  &.panel--login {
+    width: 50%;
+    min-width: 350px;
+    max-width: 650px;
+    background-color: var(--dark);
+    flex-direction: column;
+
+    @media (max-wdith: 400px) {
+      width: 100%;
+    }
+  }
+}
+
+.form {
+  label {
+    margin-bottom: 5px;
+    width: 100%;
+  }
+}
+
+.btn {
+  border: none;
+  outline: none;
+  padding: 3px;
+  
+  &.btn--rounded { border-radius: 5px }
+  &.btn--primary { background-color: var(--primary); color: #fff; }
+  &.btn--link    { background-color: transparent; }
+}

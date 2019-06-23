@@ -1,0 +1,46 @@
+#chat {
+  .container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100vh;
+    box-sizing: border-box;
+    padding: 10px;
+  }
+
+  .input {
+    position: relative;
+    display: flex;
+
+    textarea {
+      resize: none;
+      width: 100%;
+      border-top-left-radius: 3px;
+      border-bottom-left-radius: 3px;
+
+      padding: 8px;
+      font-size: large;
+      height: 1.5rem;
+    }
+
+    .send-button {
+      background-color: var(--sucess);
+      border-top-right-radius: 5%;
+      border-bottom-right-radius: 5%;
+      color: #ffffff;
+      width: 10%;
+      border: none;
+      outline: none;
+      min-width: 90px;
+    }
+  }
+
+  .message p {
+    background-color: #e2e2e2;
+    width: fit-content;
+    padding: 10px;
+    border-radius: 10px;
+    border-top-left-radius: 0;
+    min-width: 5%;
+  }
+}

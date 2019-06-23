@@ -1,5 +1,6 @@
 const path = require("path");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
   mode: "production",
@@ -14,7 +15,10 @@ module.exports = {
             loader: "coffee-loader",
             options: {
               transpile: {
-                presets: ["@babel/preset-env", "@babel/preset-react"],
+                presets: [
+                  ["@babel/preset-env", { targets: { node: "10" } }],
+                  "@babel/preset-react"
+                ],
                 plugins: ["transform-react-jsx"]
               }
             }
@@ -24,6 +28,17 @@ module.exports = {
       {
           test:/\.(css)/,
           use: ['style-loader', 'css-loader']
+      },
+      {
+        test:/\.(less)/,
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader
+          },
+          'style-loader',
+          'css-loader',
+          'less-loader'
+        ]
       }
     ]
   },
@@ -40,6 +55,10 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: __dirname + '/../public/index.html',
       favicon: __dirname + '/../public/favicon.ico'
+    }),
+    new MiniCssExtractPlugin({
+      filename: '[name].css',
+      chunkFilename: '[id].css',
     })
   ]
 };

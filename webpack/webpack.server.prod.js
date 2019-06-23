@@ -24,7 +24,9 @@ module.exports = {
             loader: 'coffee-loader',
             options: { 
               transpile: {
-                presets: ['@babel/preset-env']
+                presets: [
+                  ["@babel/preset-env", { targets: { node: "10" } }]
+                ]
               }
             }
           }

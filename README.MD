@@ -4,9 +4,10 @@
 ### Development
 - Create a .env file with the following:
   - PORT - The port in wich the server will run
-  - MONGO_URL - The The mongo url to connect to the mongo database
-  - SERVER_URL - The urk in wich the server is running
-- `npm run dev`
+  - MONGO_URL - The mongo url to connect to the mongo database
+  - SERVER_URL - The url in wich the server is running
+  - CLIENT_URL - The client url
+- `yarn dev`
 
 ### Publish server
 
@@ -15,7 +16,7 @@ Must have **docker** and **Heroku CLI** instaled
   
 - Setup (only on the first time)
   - `heroku login`
-  - `git remote add https://git.heroku.com/chatzinho-da-bolagem.git`
+  - `git remote add chatzinho-da-bolagem https://git.heroku.com/chatzinho-da-bolagem.git`
 
 - `sudo heroku container:push web`
 - `heroku container:release`

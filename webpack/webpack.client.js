@@ -14,7 +14,10 @@ module.exports = {
             loader: "coffee-loader",
             options: {
               transpile: {
-                presets: ["@babel/preset-env", "@babel/preset-react"],
+                presets: [
+                  ["@babel/preset-env", { targets: { node: "10" } }],
+                  "@babel/preset-react"
+                ],
                 plugins: ["transform-react-jsx"]
               }
             }
@@ -24,8 +27,19 @@ module.exports = {
       {
           test:/\.(css)/,
           use: ['style-loader', 'css-loader']
+      },
+      {
+        test:/\.(less)/,
+        use: ['style-loader', 'css-loader', 'less-loader']
       }
     ]
+  },
+  resolve: {
+    alias: {
+      Utils: path.resolve(__dirname, '../src/utils/'),
+      client: path.resolve(__dirname, '../src/client/'),
+    },
+    extensions: ['.coffee', '.js']
   },
   output: {
     path: __dirname + "../build/client",
