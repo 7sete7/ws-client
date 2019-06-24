@@ -15,6 +15,12 @@ module.exports = {
     port: 8080,
     open: true
   },
+  resolve: {
+    alias: {
+      Utils: path.resolve(__dirname, '../src/utils/')
+    },
+    extensions: ['.coffee', '.js']
+  },
   module: {
     rules: [
       {

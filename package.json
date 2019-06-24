@@ -4,10 +4,10 @@
   "description": "",
   "main": "build/server/index.js",
   "scripts": {
-    "run-server:dev": "nodemon build/server/index.js --watch src/server/*.*",
+    "watch-server:dev": "nodemon build/server/index.js",
     "client:dev": "webpack-dev-server --config webpack/webpack.client.js",
-    "server:dev": "webpack --config webpack/webpack.server.js",
-    "dev": "concurrently \"npm run server:dev\" \"npm run client:dev\"",
+    "server:dev": "webpack --watch --config webpack/webpack.server.js",
+    "dev": "npm run build-server && concurrently \"npm run server:dev\" \"npm run client:dev\" \"npm run watch-server:dev\"",
     "build-client": "webpack --config webpack/webpack.client.prod.js",
     "build-server": "webpack --config webpack/webpack.server.prod.js",
     "build": "npm run build-client && npm run build-server"

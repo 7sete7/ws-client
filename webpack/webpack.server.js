@@ -42,8 +42,8 @@ module.exports = {
     ]
   },
   plugins: [
-    new WebpackShellPlugin({
-        onBuildEnd: ['npm run run-server:dev']
-    }),
+    // new WebpackShellPlugin({
+    //     onBuildEnd: ['npm run run-server:dev']
+    // })
   ]
 }

@@ -1,9 +1,13 @@
 import React, { useState, useRef } from 'react'
 import Message from './message.coffee'
+import Grid from '@material-ui/core/Grid'
+
+import useStyles from 'client/ui/styles/chat'
 
 export default ({ onMessage }) -> 
     [messages, setMessages] = useState []
     canvasEl = useRef null
+    classes = useStyles()
 
     onMessage (e) ->
         msg = JSON.parse e.data
@@ -13,9 +17,9 @@ export default ({ onMessage }) ->
             canvasEl.current.scrollTo 0, canvasEl.current.clientHeight
 
     return (
-        <div ref={canvasEl} style={{ height: '100%', display: 'flex', flexDirection: 'column', overflowY: 'auto' }}>
+        <Grid container direction="row" ref={canvasEl} className={classes.canvas}>
             {
                 messages.map (text, i) -> <Message key={i} text={text} />
             }
-        </div>
+        </Grid>
     )

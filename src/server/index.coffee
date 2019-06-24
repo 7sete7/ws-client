@@ -1,8 +1,8 @@
 import express from 'express'
 import expressWs from 'express-ws'
-import Database from './db.coffee'
+import Database from './db'
 import cors from 'cors'
-import bodyParser from 'body-parser'
+import authRoutes from './auth'
 
 app = express()
 xws = expressWs(app)
@@ -14,9 +14,7 @@ app.use(express.static('dist'))
 app.get '/', (req, res) ->
     res.send '<b>OOIIE</b>'
 
-app.post '/login', bodyParser.json(), (req, res) ->
-    console.log req.body
-    res.json { leo: 'sim' }
+app.use '/auth', authRoutes
 
 app.ws '/echo', (ws, req) ->
     console.log 'Connected :D'

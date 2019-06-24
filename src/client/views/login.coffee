@@ -1,27 +1,13 @@
 import React from 'react'
 import Button from '@material-ui/core/Button'
-import CssBaseline from '@material-ui/core/CssBaseline'
 import TextField from '@material-ui/core/TextField'
 import Typography from '@material-ui/core/Typography'
-import { makeStyles } from '@material-ui/core/styles'
 import Container from '@material-ui/core/Container'
-import { Link as Link } from 'react-router-dom'
-import useLogin from 'client/hooks/auth/login.coffee'
+import Link from '@material-ui/core/Link'
+import Box from '@material-ui/core/Box'
 
-useStyles = makeStyles (theme) -> 
-    paper: 
-        marginTop: theme.spacing 10
-        display: 'flex'
-        flexDirection: 'column'
-        alignItems: 'center'
-    form:
-        marginTop: theme.spacing 1
-    submit:
-        margin: theme.spacing 3, 0, 2
-    theLink:
-        textDecoration: 'none'
-        '&:hover':
-            textDecoration: 'underline'
+import useLogin from 'client/hooks/auth/login.coffee'
+import useStyles from 'client/ui/styles/one-form-page'
 
 Login = () ->
     classes = useStyles()
@@ -29,9 +15,15 @@ Login = () ->
 
     return (
         <Container component="section" maxWidth="xs">
-            <CssBaseline />
             <div className={classes.paper}>
                 <Typography element="h1" variant="h5">Login</Typography>
+                {
+                    if error instanceof Array
+                        for e in error
+                            <Box bgcolor="error.main" p={2} m={1} key={e}>
+                                { e }
+                            </Box>
+                }
                 <form className={classes.form} noValidate>
                     <TextField 
                         variant="outlined"
@@ -39,8 +31,8 @@ Login = () ->
                         label="Nome de usuário"
                         name="username"
                         autoComplete="login"
-                        error={'username' in error}
-                        helperText={helperText('username', 'Preencha o nome de usuário')}
+                        error={'username' of error}
+                        helperText={helperText('username')}
                         fullWidth
                         required
                         {...usernameField}
@@ -53,8 +45,8 @@ Login = () ->
                         name="password"
                         autoComplete="password"
                         type="password"
-                        error={'password' in error}
-                        helperText={helperText('password', 'Preencha a senha')}
+                        error={'password' of error}
+                        helperText={helperText('password')}
                         fullWidth
                         required
                         {...passField}
@@ -62,7 +54,7 @@ Login = () ->
                 </form>
 
                 <Button type="button" variant="contained" color="primary" fullWidth className={classes.submit} onClick={doLogin}>Entrar</Button>
-                <Link to="/register" variant="body2" className={classes.theLink}>Não possui uma conta ainda?</Link>
+                <Link href="/#/register" variant="body2">Não possui uma conta ainda?</Link>
             </div>
         </Container>
     )

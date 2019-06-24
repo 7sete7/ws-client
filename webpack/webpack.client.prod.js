@@ -35,12 +35,18 @@ module.exports = {
           {
             loader: MiniCssExtractPlugin.loader
           },
-          'style-loader',
           'css-loader',
           'less-loader'
         ]
       }
     ]
+  },
+  resolve: {
+    alias: {
+      Utils: path.resolve(__dirname, '../src/utils/'),
+      client: path.resolve(__dirname, '../src/client/'),
+    },
+    extensions: ['.coffee', '.js']
   },
   output: {
     path: __dirname + "/../build/client",
