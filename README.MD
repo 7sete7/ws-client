@@ -15,6 +15,7 @@ This step is only required when there is a server change.
 Must have **docker** and **Heroku CLI** instaled
   
 - Setup (only on the first time)
+  - `sudo heroku container:login` Docker login
   - `heroku login`
   - `git remote add chatzinho-da-bolagem https://git.heroku.com/chatzinho-da-bolagem.git`
 

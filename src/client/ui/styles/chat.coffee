@@ -13,7 +13,6 @@ useStyles = makeStyles (theme) ->
     message:
         borderRadius: '10px';
         borderTopLeftRadius: '0';
-        minWidth: '5%';
         width: 'fit-content'
     inputField:
         padding: theme.spacing 1

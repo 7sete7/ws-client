@@ -69,7 +69,7 @@ Register = () ->
             </form>
 
             <Button type="button" variant="contained" color="primary" fullWidth className={classes.submit} onClick={doRegister}>Cadastrar</Button>
-            <Link href="/#/login" variant="body2">Já possui uma conta?</Link>
+            <Link onClick={() => window.location.hash = "/"} variant="body2">Já possui uma conta?</Link>
         </div>
     </Container>
 

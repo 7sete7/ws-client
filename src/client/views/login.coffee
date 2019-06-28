@@ -54,7 +54,7 @@ Login = () ->
                 </form>
 
                 <Button type="button" variant="contained" color="primary" fullWidth className={classes.submit} onClick={doLogin}>Entrar</Button>
-                <Link href="/#/register" variant="body2">Não possui uma conta ainda?</Link>
+                <Link onClick={() => window.location.hash = "register"} variant="body2">Não possui uma conta ainda?</Link>
             </div>
         </Container>
     )

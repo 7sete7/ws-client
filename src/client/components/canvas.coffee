@@ -13,13 +13,13 @@ export default ({ onMessage }) ->
         msg = JSON.parse e.data
 
         if msg.type is 'message'
-            setMessages (msgs) -> msgs.concat(msg.payload)
+            setMessages (msgs) -> msgs.concat(msg)
             canvasEl.current.scrollTo 0, canvasEl.current.clientHeight
 
     return (
-        <Grid container direction="row" ref={canvasEl} className={classes.canvas}>
+        <Grid container direction="column" ref={canvasEl} className={classes.canvas}>
             {
-                messages.map (text, i) -> <Message key={i} text={text} />
+                messages.map (message, i) -> <Message key={i} {...message} />
             }
         </Grid>
     )
