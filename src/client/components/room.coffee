@@ -15,9 +15,11 @@ export default ({ onMessage }) ->
         if msg.type is 'message'
             setMessages (msgs) -> msgs.concat(msg)
             canvasEl.current.scrollTo 0, canvasEl.current.clientHeight
+        else if msg.type is 'change_room'
+            setMessages []
 
     return (
-        <Grid container direction="column" ref={canvasEl} className={classes.canvas}>
+        <Grid container direction="row" ref={canvasEl} className={classes.canvas}>
             {
                 messages.map (message, i) -> <Message key={i} {...message} />
             }

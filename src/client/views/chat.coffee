@@ -1,18 +1,21 @@
 import React, { useState } from 'react'
 import Container from '@material-ui/core/Container'
+import Box from '@material-ui/core/Box'
 
 import Input from '../components/input.coffee'
-import Canvas from '../components/canvas.coffee'
+import Room from '../components/room.coffee'
+import Drawer from 'client/components/drawer'
+
 import useUser from 'client/hooks/user'
+import useRoom from 'client/hooks/room'
 import useStyles from 'client/ui/styles/chat'
 
 export default () ->
     { user } = useUser()
     classes = useStyles()
 
-    if user.isLoggedin
-        isWss = !/localhost/.test(process.env.SERVER_URL)
-        webSocket = new WebSocket("ws#{if isWss then 's' else ''}://#{(process.env.SERVER_URL or '').replace(/https?:\/\//, '')}/echo");
+    if user.isLoggedin        
+        { room, ws } = useRoom()
 
         onSend = (text) -> (event) ->
             msg = 
@@ -20,18 +23,20 @@ export default () ->
                 type: 'message'
                 date: new Date().toISOString()
                 user: user.username
+                room: room.name
 
-            webSocket.send JSON.stringify msg
+            ws.send JSON.stringify msg
 
-        onMessage = (fn) -> webSocket.onmessage = fn
+        onMessage = (fn) -> ws.onmessage = fn
         
         (
-            <div id="chat">
-                <Container component="section" maxWidth={false} className={classes.wrapper}>
-                    <Canvas onMessage={onMessage} />
+            <Box id="chat" element="div" display="flex">
+                <Drawer />
+                <Container component="main" maxWidth={false} className={classes.wrapper}>
+                    <Room onMessage={onMessage} />
                     <Input onSend={onSend} />
                 </Container>
-            </div>
+            </Box>
         )
     else <div></div>
         

@@ -7,9 +7,9 @@ useStyles = makeStyles (theme) ->
         display: 'flex'
         flexDirection: 'column'
         boxSizing: 'border-box'
+        justifyContent: 'space-between'
     canvas:
         overflowY: 'auto'
-        height: '100%'
     message:
         borderRadius: '10px';
         borderTopLeftRadius: '0';

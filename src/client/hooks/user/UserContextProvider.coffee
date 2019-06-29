@@ -10,6 +10,8 @@ reducer = (state, action) ->
         when "LOGGED"
             { username, hash } = action.payload
             return { ...state, username, hash, isLoggedin: true }
+        when "LOGOUT"
+            return initialContext
         else
             return state
 
@@ -61,7 +63,14 @@ UserContextProvider = ({ children }) ->
             console.error e
             return { success: false, reason: [e.message] }
 
-    return <UserContext.Provider value={{ login, user, register }}>{children}</UserContext.Provider>
+    logout = () -> 
+        dispatch { type: 'LOGOUT' }
+        window.localStorage.removeItem 'hash'
+        window.localStorage.removeItem 'username'
+        window.location.hash = '/login'
+        window.location.reload()
+
+    return <UserContext.Provider value={{ login, user, register, logout }}>{children}</UserContext.Provider>
 
 
 export default UserContextProvider
