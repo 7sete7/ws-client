@@ -1,4 +1,9 @@
-build/
+public/
+src/
+webpack/
+package.json
 node_modules/
-*.log
-.env
+coffeelint.json
+.babelrc
+Dockerfile
+yarn.lock
